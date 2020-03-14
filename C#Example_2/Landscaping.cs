@@ -4,7 +4,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
-[AddComponentMenu("MaxQ/Scripts/Level Editing/Landscaping")]
+[AddComponentMenu("Branan/Landscaping")]
 
 //***LANDSCAPING (MASTER)***///
 public class Landscaping : MonoBehaviour
