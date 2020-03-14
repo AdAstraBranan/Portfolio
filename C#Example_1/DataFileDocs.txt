@@ -1,0 +1,40 @@
+﻿Some info on the simple data system...
+
+
+To create a new file and store data to it
+
+// Create a data stream to use - using() is important to prevent leaking resources (which would cause lots of issues)
+using (MemoryStream stream = new MemoryStream())
+{
+    // Create a data writer to... write... data to...
+    DataWriter writer = new DataWriter(stream);
+    // Write like player health or something I guess?
+    writer.WriteInt(player.Health);
+
+    // More data...
+
+    // After writing all your data, turn the stream into useable.
+    byte[] bytes = writer.Internal.ToArray();
+    // Write bytes to file path. For example, you could use:
+    // Application.dataPath + "/myfile.wubalubadubdub"
+    // to write to Unity's Data directory (I forget where that is)
+    // I actually prefer using: new DirectoryInfo(Application.dataPath).Parent.FullName + "/MyFiles/myfile.wubalubadubdub"
+    // In that case, you'd probably want to store everything before the + as a variable somewhere. Makes life easier.
+    File.WriteAllBytes(filePath, bytes);
+}
+
+
+To read an existing file
+
+// Read all bytes from file.
+byte[] bytes = File.ReadAllBytes(filePath);
+// Create data stream from file bytes. using() is still important.
+using (MemoryStream stream = new MemoryStream(bytes))
+{
+    // Create a data reader to read data. How predictable.
+    DataReader reader = new DataReader(stream);
+    // Read player health
+    int playerHealth = reader.ReadInt();
+
+    // More data... Probably do stuff with it
+}
