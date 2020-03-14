@@ -1,4 +1,6 @@
-﻿using System.Linq;
+///This file works within the UnityEngine and extends the existing Terrain System to allow run-time manipulation of data masks.
+
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
